@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Matrix from "./Matrix";
 
+// import { buildMatrix, updateMatrix } from "../utils";
+
 const buildMatrix = (size, random) => {
   let matrix = [];
   for (let i = 0; i < size; i++) {
@@ -10,19 +12,18 @@ const buildMatrix = (size, random) => {
     }
     matrix.push(row);
   }
-  console.log(matrix);
   return matrix;
 };
 
 const checkNeighbors = (matrix, [y, x]) => {
   const neighbors = [
     [y - 1, x - 1],
-    [y, x - 1],
-    [y + 1, x - 1],
-    [y - 1],
-    [y + 1, x],
+    [y - 1, x],
     [y - 1, x + 1],
+    [y, x - 1],
     [y, x + 1],
+    [y + 1, x - 1],
+    [y + 1, x],
     [y + 1, x + 1],
   ];
   let liveNeighbors = 0;
@@ -51,7 +52,7 @@ export const updateMatrix = (matrix) => {
   return newMatrix;
 };
 
-export default function Gol() {
+export const Gol = function () {
   const [matrix, setMatrix] = useState([[]]);
   useEffect(() => {
     console.log("building matrix");
@@ -94,4 +95,4 @@ export default function Gol() {
       </div>
     </div>
   );
-}
+};

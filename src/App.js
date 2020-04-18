@@ -1,5 +1,5 @@
 import React from "react";
-import Gol from "./Components/Gol";
+import { Gol } from "./Components/Gol";
 import "./App.css";
 
 function App() {
