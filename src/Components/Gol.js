@@ -8,10 +8,18 @@ const buildMatrix = (size, random) => {
   for (let i = 0; i < size; i++) {
     let row = [];
     for (let j = 0; j < size; j++) {
-      row.push(random ? Math.floor(Math.random() * 2) : false);
+      if (random) {
+        //this will give numbers from 0-2 for 1/3 live rate
+        //look for zero and set status to 1
+        let status = Math.floor(Math.random() * 3) === 0 ? 1 : 0;
+        row.push(status);
+      } else {
+        row.push(0);
+      }
     }
     matrix.push(row);
   }
+  console.log(matrix);
   return matrix;
 };
 
@@ -66,7 +74,7 @@ export const Gol = function () {
       timer = setInterval(() => {
         let newMatrix = updateMatrix(matrix);
         setMatrix(newMatrix);
-      }, 500);
+      }, 1000);
     }
     if (!run && timer) {
       console.log("clearing timer");
