@@ -23,7 +23,15 @@ const checkNeighbors = (matrix, [y, x]) => {
   ];
   let liveNeighbors = 0;
   neighbors.forEach(([y, x]) => {
-    if (matrix[y] && matrix[y][x] && matrix[y][x] === 1) liveNeighbors += 1;
+    let wrappedY = y;
+    let wrappedX = x;
+    if (y < 0 || y > matrix.length - 1) {
+      wrappedY = y < 0 ? matrix.length - 1 : 0;
+    }
+    if (x < 0 || x > matrix.length - 1) {
+      wrappedX = x < 0 ? matrix.length - 1 : 0;
+    }
+    if (matrix[wrappedY][wrappedX] === 1) liveNeighbors += 1;
   });
   return liveNeighbors;
 };
