@@ -34,16 +34,59 @@
   flex-shrink: 0;
   height: 25px;
   border: 1px solid black;
-  transition: background-color 350ms linear;
+  background-color: darkgray;
+  /* transition: background-color 350ms linear; */
+}
+
+.cellSvg {
+ opacity: 1;
+ fill: none;
+ fill-opacity: 1;
+ fill-rule: evenodd;
+ stroke: #0000ff00;
+ stroke-width: 2;
+ stroke-linecap: round;
+ stroke-linejoin: round;
+ stroke-miterlimit: 4;
+ stroke-dasharray: none;
+ stroke-dashoffset: 0;
+ stroke-opacity: 1;
+ /* transition: stroke 350ms linear; */
 }
 
 .live {
-  background-color: blue;
+  stroke: #0000ff;
+  animation: fillIn 500ms forwards;
+}
+@keyframes fillIn{
+  from {
+    stroke-dasharray: 5% 700%;
+    stroke-dashoffset: -2;
+  }
+  to {
+    stroke-dasharray: 1;
+    stroke-dashoffset: -2;
+  }
 }
 
-.dead {
-  background-color: darkgray;
+@keyframes traceIn{
+  1% {
+    stroke-dasharray: 5% 700%;
+    stroke-dashoffset: -2;
+  }
+  99% {
+    stroke-dasharray: 5% 700%;
+    stroke-dashoffset: -125;
+  }
+  100% {
+    stroke-dasharray: 1;
+    stroke-dashoffset: -2;
+  }
 }
+
+/* .dead {
+  background-color: darkgray;
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
